@@ -12,7 +12,8 @@ services:
     plan: free
     region: singapore
     buildCommand: >-
-      python -c "import zipfile; zipfile.ZipFile('librarypro-source.zip').extractall('.')"
+      python -m zipfile -e librarypro-source.zip .
+      && python -c "import os; assert os.path.isdir('librarypro'), 'source archive extraction failed'"
       && pip install -r requirements.txt
       && python manage.py collectstatic --noinput
     startCommand: python manage.py migrate && gunicorn librarypro.wsgi:application
