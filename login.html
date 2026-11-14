@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block auth_content %}
+<div class="login-screen"><div class="login-art"><div class="login-brand"><span class="brand-mark">L</span> LibraryPro</div><div class="art-copy"><span class="eyebrow light">A SMARTER WAY TO MANAGE KNOWLEDGE</span><h1>Every great library<br>has a <em>great system.</em></h1><p>Bring your collection, members and daily circulation into one beautifully organized workspace.</p></div><div class="art-footer">LIBRARY MANAGEMENT SUITE <span>01 / 03</span></div></div>
+<div class="login-panel"><div class="login-form-wrap"><div class="mobile-brand"><span class="brand-mark">L</span> LibraryPro</div><span class="eyebrow">WELCOME BACK</span><h2>Sign in to your<br>workspace</h2><p class="muted">Enter your administrator credentials to continue.</p>
+{% if messages %}{% for message in messages %}<div class="alert error">{{ message }}</div>{% endfor %}{% endif %}
+<form method="post" class="stack-form">{% csrf_token %}<label>Username<input name="username" required autofocus autocomplete="username" placeholder="Enter your username"></label><label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label><button class="btn btn-primary btn-wide" type="submit">Sign in <span>→</span></button></form><div class="login-note">Secure administrator access · LibraryPro</div></div></div></div>
+{% endblock %}
