@@ -11,7 +11,10 @@ services:
     runtime: python
     plan: free
     region: singapore
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    buildCommand: >-
+      python -c "import zipfile; zipfile.ZipFile('librarypro-source.zip').extractall('.')"
+      && pip install -r requirements.txt
+      && python manage.py collectstatic --noinput
     startCommand: python manage.py migrate && gunicorn librarypro.wsgi:application
     envVars:
       - key: DJANGO_SECRET_KEY
