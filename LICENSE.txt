@@ -1,0 +1,1 @@
+For educational and personal project use. Review and replace sample configuration before deployment.
